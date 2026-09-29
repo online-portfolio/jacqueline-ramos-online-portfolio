@@ -9,7 +9,7 @@ export function SidebarBody({ onNavigate }: { onNavigate: (id: string) => void }
           <div className="absolute -top-2 -left-2 size-3 bg-peach" aria-hidden />
           <div className="absolute -right-2 -bottom-2 size-3 bg-sage" aria-hidden />
           <img
-            src="/profile.png"
+            src="https://online-portfolio.github.io/jacqueline-ramos-online-portfolio/profile.png"
             alt={`${PROFILE.name}, ${PROFILE.title}`}
             width={816}
             height={816}
