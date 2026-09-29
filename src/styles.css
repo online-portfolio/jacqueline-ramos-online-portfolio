@@ -1,0 +1,182 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system: calm academic dashboard.
+ * Warm ivory surfaces, deep navy ink, pastel accent family,
+ * restrained pixel-inspired details (tiny squares, stepped borders).
+ * All colors in oklch.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 6px);
+  --radius-3xl: calc(var(--radius) + 10px);
+  --radius-4xl: calc(var(--radius) + 14px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-ivory: var(--ivory);
+  --color-blue-pastel: var(--blue-pastel);
+  --color-sage: var(--sage);
+  --color-blush: var(--blush);
+  --color-lavender: var(--lavender);
+  --color-peach: var(--peach);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --shadow-card: 0 1px 0 0 var(--border), 0 10px 24px -18px oklch(0.25 0.05 260 / 0.35);
+  --shadow-lift: 0 2px 0 0 var(--ink), 0 18px 32px -20px oklch(0.25 0.05 260 / 0.45);
+}
+
+:root {
+  --radius: 0.25rem;
+  --ivory: oklch(0.987 0.012 228);
+  --background: oklch(0.94 0.032 232);
+  --foreground: oklch(0.255 0.045 258);
+  --ink: oklch(0.255 0.045 258);
+  --ink-soft: oklch(0.46 0.028 258);
+  --card: oklch(0.992 0.016 228);
+  --card-foreground: oklch(0.255 0.045 258);
+  --popover: oklch(0.992 0.016 228);
+  --popover-foreground: oklch(0.255 0.045 258);
+  --primary: oklch(0.33 0.075 242);
+  --primary-foreground: oklch(0.985 0.014 228);
+  --secondary: oklch(0.965 0.02 232);
+  --secondary-foreground: oklch(0.31 0.06 242);
+  --muted: oklch(0.952 0.016 230);
+  --muted-foreground: oklch(0.52 0.03 258);
+  --accent: oklch(0.9 0.045 228);
+  --accent-foreground: oklch(0.28 0.05 258);
+  --destructive: oklch(0.577 0.16 27);
+  --destructive-foreground: oklch(0.98 0.01 92);
+  --border: oklch(0.885 0.024 230);
+  --input: oklch(0.885 0.024 230);
+  --ring: oklch(0.72 0.06 240);
+  --blue-pastel: oklch(0.89 0.055 228);
+  --sage: oklch(0.875 0.048 150);
+  --blush: oklch(0.9 0.045 20);
+  --lavender: oklch(0.885 0.05 300);
+  --peach: oklch(0.898 0.06 60);
+  --sidebar: oklch(0.97 0.022 230);
+  --sidebar-foreground: oklch(0.255 0.045 258);
+  --sidebar-primary: oklch(0.32 0.065 242);
+  --sidebar-primary-foreground: oklch(0.98 0.012 228);
+  --sidebar-accent: oklch(0.93 0.032 228);
+  --sidebar-accent-foreground: oklch(0.28 0.05 258);
+  --sidebar-border: oklch(0.89 0.022 230);
+  --sidebar-ring: oklch(0.72 0.06 240);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background:
+      radial-gradient(circle at top left, rgba(255, 255, 255, 0.85), transparent 30%),
+      linear-gradient(180deg, oklch(0.956 0.024 232) 0%, oklch(0.94 0.032 232) 100%);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Monospaced micro-label used for section tags */
+@utility micro-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+/* Faint pixel grid backdrop */
+@utility pixel-grid {
+  background-image:
+    linear-gradient(to right, var(--color-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Tiny stepped square accent row */
+@utility pixel-divider {
+  height: 4px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-border) 0 4px,
+    transparent 4px 10px
+  );
+}
+
+@utility card-tile {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+@utility card-tile-hover {
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lift);
+    border-color: var(--color-ink);
+  }
+}
+
+/* Professional polish: crisp text + themed cursor */
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+body {
+  font-size: 1.0625rem; line-height: 1.6; color: var(--foreground);
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Cpath d='M3 2l15 7-6.5 2L9 18z' fill='%23233152' stroke='%23fbf8ef' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, auto;
+}
+a, button, [role="button"], summary, label[for], select {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='8' fill='%23c9d8ee' fill-opacity='.7' stroke='%23233152' stroke-width='2'/%3E%3Ccircle cx='12' cy='12' r='2.5' fill='%23233152'/%3E%3C/svg%3E") 12 12, pointer;
+}
+h1, h2, h3, h4 { letter-spacing: -0.015em; font-weight: 700; }
+::selection { background: var(--blue-pastel); color: var(--ink); }
